@@ -19,7 +19,7 @@ const Weather = () => {
 
     data.then((usrdata)=>{
         setWeather(usrdata.data.weather[0].main)
-        setTemp(usrdata.data.main.temp)
+        setTemp(Math.floor(usrdata.data.main.temp-273.15))
         setDesc(usrdata.data.weather[0].description)
     }).catch(()=>{
         console.log("Failed")
@@ -44,7 +44,7 @@ const Weather = () => {
           Get Report
         </button>
         <p className="font-bold mt-2">Weather : <b className="text-red-700">{weather}</b></p>
-        <p className="font-bold">Temperature : <b className="text-red-700">{temp}</b></p>
+        <p className="font-bold">Temperature : <b className="text-red-700">{temp}°C</b></p>
         <p className="font-bold">Description : <b className="text-red-700">{desc}</b></p>
       </div>
     </div>
